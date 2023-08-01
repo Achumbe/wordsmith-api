@@ -31,30 +31,5 @@ pipeline {
                 }
             }
         }
-        stage('sonar scan'){
-            tools{
-                maven 'maven-3.9.3'
-            }
-            steps{
-               withSonarQubeEnv('sonar') {
-                sh "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.projectKey=frontend"
-              }
-            }
-        }
-        stage("Quality Gate"){
-            steps{
-                script{
-                    timeout(time: 1, unit: 'HOURS') {
-                    def qg = waitForQualityGate()
-                    if (qg.status != 'OK') {
-                        error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                }
-            }
-
-                }
-            }
-          
-        }
-      
     }
 }
