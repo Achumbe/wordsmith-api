@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools{
-         maven "maven"
+        maven "maven"
         jdk "jdk-17"
     }
 
@@ -17,15 +17,12 @@ pipeline {
         stage("Build Artifact") {
             steps{
                 script{
-                    "java --version"
+                    sh "java --version"
                     sh "mvn clean install"
                 }
             }
         }
         stage("Unit Test") {
-            tools{
-                maven "maven"
-            }
             steps{
                 script{
                 sh "mvn test"
