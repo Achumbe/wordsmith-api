@@ -5,7 +5,7 @@ pipeline {
         stage("init") {
             steps{
                 script{
-                    git branch: 'main',credentialId: 'github,' url: 'https://github.com/Achumbe/wordsmith-api.git'
+                    git branch: 'main', url: 'https://github.com/Achumbe/wordsmith-api.git'
                 }
 
             }
