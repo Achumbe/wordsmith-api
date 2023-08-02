@@ -14,6 +14,20 @@ pipeline {
 
             }
         }
-        
+        stage("Build Artifact") {
+            steps{
+                script{
+                    sh "java --version"
+                    sh "mvn clean install"
+                }
+            }
+        }
+        stage("Unit Test") {
+            steps{
+                script{
+                    sh "mvn test"
+                }
+            }
+        }
     }
 }
