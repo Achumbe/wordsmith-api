@@ -12,7 +12,7 @@ pipeline {
         }
         stage("Build Artifact") {
             tools{
-                maven "maven-3.9"
+                maven "maven"
             }
             steps{
                 script{
@@ -22,7 +22,7 @@ pipeline {
         }
         stage("Unit Test") {
             tools{
-                maven "maven-3.9"
+                maven "maven"
             }
             steps{
                 script{
