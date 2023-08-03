@@ -18,8 +18,8 @@ pipeline {
             steps{
                 script{
                     sh "ls -l"
-                    // sh "java --version"
                     sh "mvn clean install"
+                    sh "java --version"
                 }
             }
         }
