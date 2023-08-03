@@ -2,7 +2,6 @@ pipeline {
     agent any
     tools{
         maven "maven"
-        jdk "jdk-17"
     }
 
     stages {
@@ -15,6 +14,9 @@ pipeline {
             }
         }
         stage("Build Artifact") {
+            tools{
+                jdk "jdk"
+            }
             steps{
                 script{
                     sh "ls -l"
