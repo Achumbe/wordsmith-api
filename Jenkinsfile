@@ -15,7 +15,7 @@ pipeline {
         }
         stage("Build Artifact") {
             tools{
-                jdk "jdk"
+                jdk "jdk-17"
             }
             steps{
                 script{
