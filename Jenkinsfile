@@ -78,13 +78,23 @@ pipeline {
 }
 
 def getDockerTag() {
-    //develope=> 1.1.0-rc.230 | master => 1.1.0.200 | feature => 1.1.0-feature-something.240
+    //develope=> 1.1.0.230-rc | master => 1.1.0.200 | feature => 1.1.0.240-feature-something
     def pom = readMavenPom(file: 'pom.xml')
     def version = pom.version
     def branch = "${env.BRANCH_NAME}"
     def build_number = "${env.BUILD_NUMBER}"
-    println version 
-    println branch
-    println build_number
+
+    def tag = ""
     
+    if (branch == 'main'){
+        tag = "${version}.${build_number}"
+    } else if(branch == "develop"){
+        tag = "${version}.${build_number}-rc"
+    } else {
+        branch = branch.replace("/", "-").replace("\\", "-")
+        tag = "${version}-${branch}.${build_number}"
+    }
+    println tag
+    return tag
+
 }
