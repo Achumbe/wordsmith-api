@@ -61,7 +61,7 @@ pipeline {
             steps {
                 script{
                     def tag = getDockerTag()
-                    withAWS([credentials: 'aws-creds', region: 'us-east-2']) {
+                    withAWS([credentials: 'aws-cred', region: 'us-east-1']) {
                         sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 602182454152.dkr.ecr.us-east-1.amazonaws.com"
                         sh "docker push 602182454152.dkr.ecr.us-east-1.amazonaws.com/wordsmith-api:${tag}"
                     }
