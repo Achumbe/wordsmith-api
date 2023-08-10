@@ -94,6 +94,7 @@ def getDockerTag() {
         branch = branch.replace("/", "-").replace("\\", "-")
         tag = "${version}-${branch}.${build_number}"
     }
+    
     println tag
     return tag
 
